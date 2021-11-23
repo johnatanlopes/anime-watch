@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                                 
+    "module": "commonjs", 
+    "baseUrl": "./src",
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"],
+      "@errors/*": ["errors/*"],
+      "@utils/*": ["utils/*"]
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,           
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true, 
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
+}
