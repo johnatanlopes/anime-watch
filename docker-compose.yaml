@@ -9,3 +9,10 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
+  api:
+    build: .
+    container_name: anime-notify-api
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app
