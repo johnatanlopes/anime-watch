@@ -3,7 +3,7 @@ version: "3.7"
 services:
   mongo:
     image: mongo
-    container_name: mongo-anime-notify
+    container_name: mongo-watch
     ports:
       - 27017:27017
     environment:
@@ -11,7 +11,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=admin
   api:
     build: .
-    container_name: anime-notify-api
+    container_name: anime-watch
     ports:
       - 3000:3000
     volumes:
