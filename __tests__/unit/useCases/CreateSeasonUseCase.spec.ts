@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
 
 import { AppError } from '../../../src/errors/AppError';
+import { RabbitFakeProvider } from '../../../src/providers/QueueProvider/RabbitFakeProvider';
 import { SeasonFakeRepository } from '../../../src/repositories/fakes/SeasonFakeRepository';
 import { CreateSeasonUseCase } from '../../../src/useCases/CreateSeasonUseCase';
 
 let seasonFakeRepository: SeasonFakeRepository;
 let createSeasonUseCase: CreateSeasonUseCase;
+let rabbitFakeProvider: RabbitFakeProvider;
 
 const site_id = String(new mongoose.Types.ObjectId());
 const title = 'Season 1';
@@ -13,7 +15,13 @@ const title = 'Season 1';
 describe('CreateSeasonUseCase', () => {
   beforeEach(() => {
     seasonFakeRepository = new SeasonFakeRepository();
-    createSeasonUseCase = new CreateSeasonUseCase(seasonFakeRepository);
+
+    rabbitFakeProvider = new RabbitFakeProvider();
+
+    createSeasonUseCase = new CreateSeasonUseCase(
+      seasonFakeRepository,
+      rabbitFakeProvider,
+    );
   });
 
   it('should be able to create a new season', async () => {

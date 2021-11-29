@@ -9,6 +9,12 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
+  rabbitmq:
+    image: rabbitmq:3.7-management-alpine
+    container_name: rabbitmq-watch
+    ports:
+      - "5672:5672"
+      - "15672:15672"
   api:
     build: .
     container_name: anime-watch

@@ -1,3 +1,4 @@
+import { RabbitFakeProvider } from '../../../src/providers/QueueProvider/RabbitFakeProvider';
 import { AnimeFakeRepository } from '../../../src/repositories/fakes/AnimeFakeRepository';
 import { SeasonFakeRepository } from '../../../src/repositories/fakes/SeasonFakeRepository';
 import { SiteFakeRepository } from '../../../src/repositories/fakes/SiteFakeRepository';
@@ -13,7 +14,11 @@ describe('ListSeasonsUseCase', () => {
     const siteFakeRepository = new SiteFakeRepository();
     const createSiteUseCase = new CreateSiteUseCase(siteFakeRepository);
     const seasonFakeRepository = new SeasonFakeRepository();
-    const createSeasonUseCase = new CreateSeasonUseCase(seasonFakeRepository);
+    const rabbitFakeProvider = new RabbitFakeProvider();
+    const createSeasonUseCase = new CreateSeasonUseCase(
+      seasonFakeRepository,
+      rabbitFakeProvider,
+    );
     const listSeasonsBySiteUseCase = new ListSeasonsBySiteUseCase(
       seasonFakeRepository,
     );
