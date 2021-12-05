@@ -14,7 +14,7 @@ class CreateSeasonController {
       url: String(process.env.RABBIT_URL),
       exchange: 'animes',
       routingKey: 'SEASON_CREATED',
-      queue: 'seasons',
+      queue: 'season_created',
     });
 
     const createSeasonUseCase = new CreateSeasonUseCase(
